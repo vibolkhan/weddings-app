@@ -77,10 +77,10 @@
             </div>
           </div>
 
-          <div class="pb-3 text-base text-center font-dangrek bg-gradient-to-t from-gray-900 to-transparent">
+          <div class="pb-3 mt-10 text-base text-center font-dangrek bg-gradient-to-t from-gray-900 to-transparent">
             <div class="mt-10">
               <div x-data="dateFormatter(null, true)">
-                <span id="event-date" class="text-2xl" x-text="formattedDate">ថ្ងៃព្រហស្បតិ៍ ទី ២៣ ខែ តុលា ឆ្នាំ ២០២៥
+                <span id="event-date" class="text-2xl" x-text="formattedDate">ថ្ងៃព្រហស្បតិ៍ ទី ៥ ខែ មិនា ឆ្នាំ ២០២៦
                   ម៉ោង ៤:៤០ ល្ងាច</span>
               </div>
             </div>
@@ -88,8 +88,8 @@
               ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ</div>
             <span></span>
             <div class="flex justify-center">
-              <add-to-calendar-button size="1" name="ដដដ &amp; ថថថថ's Wedding" startdate="2025-10-23" starttime="16:40"
-                enddate="2025-10-23" endtime="21:00" timezone="Asia/Phnom_Penh" location="#"
+              <add-to-calendar-button size="1" name="ដដដ &amp; ថថថថ's Wedding" startdate="2026-03-05" starttime="16:40"
+                enddate="2026-03-05" endtime="21:00" timezone="Asia/Phnom_Penh" location="#"
                 options="'Apple','Google','iCal','Outlook.com'" atcb-button-id="atcb-btn-1"
                 organizer="TheapKa.com|admin@theapka.com"
                 description="ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ. Powered by https://theapka.com"
@@ -135,7 +135,7 @@
 
             <div class="mt-4">
               <span class="text-center font-moulpali" x-data="dateFormatter('2025-10-23')"
-                x-text="formattedDate">ថ្ងៃព្រហស្បតិ៍ ទី ២៣ ខែ តុលា ឆ្នាំ ២០២៥</span>
+                x-text="formattedDate">ថ្ងៃព្រហស្បតិ៍ ទី ៥ ខែ មិនា ឆ្នាំ ២០២៦</span>
               <div class="flex" x-data="timeFormatter('07:00:00')">
                 <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
                   <div x-text="formattedTime">ម៉ោង ៧:០០ ព្រឹក</div>
@@ -227,11 +227,13 @@
         </div>
       </div>
 
-      <div class="w-full px-3 mt-10 text-center">
+      <!-- countdown -->
+      <div class="w-full px-5 mt-10 text-center">
         <div id="countdown"
-          class="mt-4 px-8 py-6 text-2xl font-dangrek animate-breathing inline-block rounded-2xl text-center"></div>
+          class="px-5 py-4 text-2xl font-dangrek animate-breathing inline-block rounded-2xl text-center"></div>
       </div>
 
+      <!-- map -->
       <div class="relative w-full max-w-xl mx-auto mb-4 font-dangrek mt-10 px-3 text-center">
         <div>ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ</div>
 
@@ -246,6 +248,26 @@
           បើកផែនទីក្នុង Google Maps
         </a>
       </div>
+
+      <!-- Gift QR Section -->
+      <section class="qr-section">
+        <h2 class="qr-title font-moulpali">ស្កេនដើម្បីចូលរួមអបអរសាទរពិធីអាពាហ៍ពិពាហ៍</h2>
+
+        <div class="qr-grid">
+          <figure class="qr-card">
+            <img src="assets/img/kr-qr.jpg" alt="KHQR (KHR)" loading="lazy" class="qr-img" />
+            <figcaption class="qr-caption font-dangrek">KHQR (KHR)</figcaption>
+            <a href="assets/img/kr-qr.jpg" download class="btn qr-btn">Download</a>
+          </figure>
+
+          <figure class="qr-card">
+            <img src="assets/img/usd-qr.jpg" alt="USDT/Pay (USD)" loading="lazy" class="qr-img" />
+            <figcaption class="qr-caption font-dangrek">USD QR</figcaption>
+            <a href="assets/img/usd-qr.jpg" download class="btn qr-btn">Download</a>
+          </figure>
+        </div>
+      </section>
+
       <div id="theapka-thank-you" class="w-full text-center h-[750px] bg-center bg-cover bg-no-repeat relative"
         style="background-image: url('https://theapka.com/storage/01J4TYXR517E73RV2PRB75Y5ME.jpg');">
         <div class="z-0 w-full h-full bg-white opacity-30"></div>
