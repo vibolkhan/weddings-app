@@ -1,0 +1,2483 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>លិខិតអញ្ជើញសិរីមង្គលអាពាហ៍ពិពាហ៍</title>
+  <meta property="og:title" content="លិខិតអញ្ជើញសិរីមង្គលអាពាហ៍ពិពាហ៍">
+  <meta name="description" content="លិខិតអញ្ជើញសិរីមង្គលអាពាហ៍ពិពាហ៍">
+  <meta property="og:image"
+    content="https://api.microlink.io?url=https%3A%2F%2Ftheapka.com%2Fevents%2Fwedding-20251023094043-8363%2Fpreview_templates%2F2&amp;screenshot=true&amp;meta=false&amp;embed=screenshot.url">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image"
+    content="https://api.microlink.io?url=https%3A%2F%2Ftheapka.com%2Fevents%2Fwedding-20251023094043-8363%2Fpreview_templates%2F2&amp;screenshot=true&amp;meta=false&amp;embed=screenshot.url">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dangrek&amp;family=Kantumruy+Pro&amp;family=Battambang&amp;family=Fasthand&amp;family=Moulpali&amp;family=Wix+Madefor+Display:wght@400;500;600;700&amp;display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/km.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/locale/km/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async="" defer=""></script>
+  <link rel="stylesheet" href="https://theapka.com/storage/templates/chhay/style.css?v2.5">
+  <script>
+    dayjs.locale('km')
+
+    function convertToKhmerNumerals(number) {
+      const khmerNumerals = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+      return number.toString().split('').map(digit => khmerNumerals[digit]).join('');
+    }
+    function replaceNumbersWithKhmer(text) {
+      return text.split('').map(char => {
+        const digit = parseInt(char, 10);
+        return isNaN(digit) ? char : convertToKhmerNumerals(digit);
+      }).join('');
+    }
+
+  </script>
+  <style>
+    @keyframes breathing {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px 0 rgba(236, 72, 153, 0.4);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px 0 rgba(236, 72, 153, 0.6);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px 0 rgba(236, 72, 153, 0.4);
+      }
+    }
+
+    .animate-breathing {
+      animation: breathing 2.5s ease-in-out infinite;
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
+  </style>
+  <script>
+    function dateFormatter(eventDate = null, showTime = false) {
+      return {
+        formattedDate: '',
+        eventDate: eventDate ?? "2025-10-23 16:40:00",
+        showTime: showTime,
+        init() {
+          dayjs.locale('km');
+          const dayjsDate = dayjs(this.eventDate);
+
+          // Format date
+          let formattedDate = dayjsDate.format('ថ្ងៃdddd ទី DD ខែ MMMM ឆ្នាំ YYYY');
+
+          // Convert to Khmer numerals
+          const dayInKhmer = convertToKhmerNumerals(dayjsDate.date());
+          const yearInKhmer = convertToKhmerNumerals(dayjsDate.year());
+
+          formattedDate = formattedDate
+            .replace(dayjsDate.date(), dayInKhmer)
+            .replace(dayjsDate.year(), yearInKhmer);
+
+          // Optional time display
+          if (this.showTime) {
+            const dateObj = new Date(this.eventDate);
+            const timeInKhmer = dateFns.format(dateObj, 'ម៉ោង h:mm b', {
+              locale: dateFns.locale.km
+            });
+            const timeInKhmerNumerals = replaceNumbersWithKhmer(timeInKhmer);
+            this.formattedDate = `${formattedDate} ${timeInKhmerNumerals}`;
+          } else {
+            this.formattedDate = formattedDate;
+          }
+        }
+      }
+    }
+
+    function timeFormatter(time) {
+      return {
+        time: time,
+        formattedTime: '',
+        init() {
+          this.formattedTime = this.formatStringToTime(this.time);
+        },
+        formatStringToTime(timeString) {
+          const [hour, minute, second] = timeString.split(':').map(Number);
+
+          const tempDate = new Date();
+          const updatedDate = dateFns.setSeconds(
+            dateFns.setMinutes(dateFns.setHours(tempDate, hour), minute),
+            second
+          );
+
+          const formattedTime = dateFns.format(updatedDate, 'ម៉ោង h:mm b', {
+            locale: dateFns.locale.km
+          });
+
+          // Convert formatted time to Khmer numerals
+          return formattedTime.split('').map(char => {
+            return char.match(/\d/) ? convertToKhmerNumerals(char) : char;
+          }).join('');
+        }
+      }
+    }
+  </script>
+  <style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+
+  <style>
+    *,
+    ::before,
+    ::after {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-pan-x: ;
+      --tw-pan-y: ;
+      --tw-pinch-zoom: ;
+      --tw-scroll-snap-strictness: proximity;
+      --tw-gradient-from-position: ;
+      --tw-gradient-via-position: ;
+      --tw-gradient-to-position: ;
+      --tw-ordinal: ;
+      --tw-slashed-zero: ;
+      --tw-numeric-figure: ;
+      --tw-numeric-spacing: ;
+      --tw-numeric-fraction: ;
+      --tw-ring-inset: ;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-color: rgb(59 130 246 / 0.5);
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-colored: 0 0 #0000;
+      --tw-blur: ;
+      --tw-brightness: ;
+      --tw-contrast: ;
+      --tw-grayscale: ;
+      --tw-hue-rotate: ;
+      --tw-invert: ;
+      --tw-saturate: ;
+      --tw-sepia: ;
+      --tw-drop-shadow: ;
+      --tw-backdrop-blur: ;
+      --tw-backdrop-brightness: ;
+      --tw-backdrop-contrast: ;
+      --tw-backdrop-grayscale: ;
+      --tw-backdrop-hue-rotate: ;
+      --tw-backdrop-invert: ;
+      --tw-backdrop-opacity: ;
+      --tw-backdrop-saturate: ;
+      --tw-backdrop-sepia: ;
+      --tw-contain-size: ;
+      --tw-contain-layout: ;
+      --tw-contain-paint: ;
+      --tw-contain-style:
+    }
+
+    ::backdrop {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-pan-x: ;
+      --tw-pan-y: ;
+      --tw-pinch-zoom: ;
+      --tw-scroll-snap-strictness: proximity;
+      --tw-gradient-from-position: ;
+      --tw-gradient-via-position: ;
+      --tw-gradient-to-position: ;
+      --tw-ordinal: ;
+      --tw-slashed-zero: ;
+      --tw-numeric-figure: ;
+      --tw-numeric-spacing: ;
+      --tw-numeric-fraction: ;
+      --tw-ring-inset: ;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-color: rgb(59 130 246 / 0.5);
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-colored: 0 0 #0000;
+      --tw-blur: ;
+      --tw-brightness: ;
+      --tw-contrast: ;
+      --tw-grayscale: ;
+      --tw-hue-rotate: ;
+      --tw-invert: ;
+      --tw-saturate: ;
+      --tw-sepia: ;
+      --tw-drop-shadow: ;
+      --tw-backdrop-blur: ;
+      --tw-backdrop-brightness: ;
+      --tw-backdrop-contrast: ;
+      --tw-backdrop-grayscale: ;
+      --tw-backdrop-hue-rotate: ;
+      --tw-backdrop-invert: ;
+      --tw-backdrop-opacity: ;
+      --tw-backdrop-saturate: ;
+      --tw-backdrop-sepia: ;
+      --tw-contain-size: ;
+      --tw-contain-layout: ;
+      --tw-contain-paint: ;
+      --tw-contain-style:
+    }
+
+    /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #e5e7eb
+    }
+
+    ::after,
+    ::before {
+      --tw-content: ''
+    }
+
+    :host,
+    html {
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      -moz-tab-size: 4;
+      tab-size: 4;
+      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    body {
+      margin: 0;
+      line-height: inherit
+    }
+
+    hr {
+      height: 0;
+      color: inherit;
+      border-top-width: 1px
+    }
+
+    abbr:where([title]) {
+      -webkit-text-decoration: underline dotted;
+      text-decoration: underline dotted
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      font-weight: inherit
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit
+    }
+
+    b,
+    strong {
+      font-weight: bolder
+    }
+
+    code,
+    kbd,
+    pre,
+    samp {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      font-size: 1em
+    }
+
+    small {
+      font-size: 80%
+    }
+
+    sub,
+    sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline
+    }
+
+    sub {
+      bottom: -.25em
+    }
+
+    sup {
+      top: -.5em
+    }
+
+    table {
+      text-indent: 0;
+      border-color: inherit;
+      border-collapse: collapse
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-feature-settings: inherit;
+      font-variation-settings: inherit;
+      font-size: 100%;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0
+    }
+
+    button,
+    select {
+      text-transform: none
+    }
+
+    button,
+    input:where([type=button]),
+    input:where([type=reset]),
+    input:where([type=submit]) {
+      -webkit-appearance: button;
+      background-color: transparent;
+      background-image: none
+    }
+
+    :-moz-focusring {
+      outline: auto
+    }
+
+    :-moz-ui-invalid {
+      box-shadow: none
+    }
+
+    progress {
+      vertical-align: baseline
+    }
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      height: auto
+    }
+
+    [type=search] {
+      -webkit-appearance: textfield;
+      outline-offset: -2px
+    }
+
+    ::-webkit-search-decoration {
+      -webkit-appearance: none
+    }
+
+    ::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      font: inherit
+    }
+
+    summary {
+      display: list-item
+    }
+
+    blockquote,
+    dd,
+    dl,
+    figure,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    p,
+    pre {
+      margin: 0
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 0
+    }
+
+    legend {
+      padding: 0
+    }
+
+    menu,
+    ol,
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    dialog {
+      padding: 0
+    }
+
+    textarea {
+      resize: vertical
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      opacity: 1;
+      color: #9ca3af
+    }
+
+    [role=button],
+    button {
+      cursor: pointer
+    }
+
+    :disabled {
+      cursor: default
+    }
+
+    audio,
+    canvas,
+    embed,
+    iframe,
+    img,
+    object,
+    svg,
+    video {
+      display: block;
+      vertical-align: middle
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto
+    }
+
+    [hidden]:where(:not([hidden=until-found])) {
+      display: none
+    }
+
+    .absolute {
+      position: absolute
+    }
+
+    .relative {
+      position: relative
+    }
+
+    .bottom-3 {
+      bottom: 0.75rem
+    }
+
+    .left-0 {
+      left: 0px
+    }
+
+    .left-1\/2 {
+      left: 50%
+    }
+
+    .left-5 {
+      left: 1.25rem
+    }
+
+    .top-0 {
+      top: 0px
+    }
+
+    .top-1\/2 {
+      top: 50%
+    }
+
+    .z-0 {
+      z-index: 0
+    }
+
+    .m-auto {
+      margin: auto
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .my-12 {
+      margin-top: 3rem;
+      margin-bottom: 3rem
+    }
+
+    .my-4 {
+      margin-top: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .-mt-\[38px\] {
+      margin-top: -38px
+    }
+
+    .mb-16 {
+      margin-bottom: 4rem
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem
+    }
+
+    .mb-5 {
+      margin-bottom: 1.25rem
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem
+    }
+
+    .mt-10 {
+      margin-top: 2.5rem
+    }
+
+    .mt-2 {
+      margin-top: 0.5rem
+    }
+
+    .mt-24 {
+      margin-top: 6rem
+    }
+
+    .mt-3 {
+      margin-top: 0.75rem
+    }
+
+    .mt-4 {
+      margin-top: 1rem
+    }
+
+    .mt-5 {
+      margin-top: 1.25rem
+    }
+
+    .flex {
+      display: flex
+    }
+
+    .h-12 {
+      height: 3rem
+    }
+
+    .h-24 {
+      height: 6rem
+    }
+
+    .h-6 {
+      height: 1.5rem
+    }
+
+    .h-\[50px\] {
+      height: 50px
+    }
+
+    .h-\[650px\] {
+      height: 650px
+    }
+
+    .h-\[750px\] {
+      height: 750px
+    }
+
+    .h-full {
+      height: 100%
+    }
+
+    .w-\[200px\] {
+      width: 200px
+    }
+
+    .w-full {
+      width: 100%
+    }
+
+    .max-w-xl {
+      max-width: 36rem
+    }
+
+    .max-w-xs {
+      max-width: 20rem
+    }
+
+    .flex-1 {
+      flex: 1 1 0%
+    }
+
+    .-translate-x-1\/2 {
+      --tw-translate-x: -50%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+    }
+
+    .-translate-y-1\/2 {
+      --tw-translate-y: -50%;
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+    }
+
+    .transform {
+      transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+    }
+
+    .flex-row {
+      flex-direction: row
+    }
+
+    .flex-col {
+      flex-direction: column
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap
+    }
+
+    .items-end {
+      align-items: flex-end
+    }
+
+    .justify-center {
+      justify-content: center
+    }
+
+    .justify-between {
+      justify-content: space-between
+    }
+
+    .rounded-2xl {
+      border-radius: 1rem
+    }
+
+    .bg-white {
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-gradient-to-b {
+      background-image: linear-gradient(to bottom, var(--tw-gradient-stops))
+    }
+
+    .bg-gradient-to-t {
+      background-image: linear-gradient(to top, var(--tw-gradient-stops))
+    }
+
+    .from-gray-500 {
+      --tw-gradient-from: #6b7280 var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(107 114 128 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-gray-900 {
+      --tw-gradient-from: #111827 var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .to-transparent {
+      --tw-gradient-to: transparent var(--tw-gradient-to-position)
+    }
+
+    .bg-cover {
+      background-size: cover
+    }
+
+    .bg-center {
+      background-position: center
+    }
+
+    .bg-no-repeat {
+      background-repeat: no-repeat
+    }
+
+    .p-2 {
+      padding: 0.5rem
+    }
+
+    .px-3 {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem
+    }
+
+    .px-5 {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem
+    }
+
+    .py-12 {
+      padding-top: 3rem;
+      padding-bottom: 3rem
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem
+    }
+
+    .pb-1 {
+      padding-bottom: 0.25rem
+    }
+
+    .pb-3 {
+      padding-bottom: 0.75rem
+    }
+
+    .pr-2 {
+      padding-right: 0.5rem
+    }
+
+    .pt-12 {
+      padding-top: 3rem
+    }
+
+    .text-left {
+      text-align: left
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+      line-height: 2rem
+    }
+
+    .text-3xl {
+      font-size: 1.875rem;
+      line-height: 2.25rem
+    }
+
+    .text-base {
+      font-size: 1rem;
+      line-height: 1.5rem
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem
+    }
+
+    .font-bold {
+      font-weight: 700
+    }
+
+    .leading-8 {
+      line-height: 2rem
+    }
+
+    .text-black {
+      --tw-text-opacity: 1;
+      color: rgb(0 0 0 / var(--tw-text-opacity, 1))
+    }
+
+    .text-blue-500 {
+      --tw-text-opacity: 1;
+      color: rgb(59 130 246 / var(--tw-text-opacity, 1))
+    }
+
+    .text-white {
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+    }
+
+    .underline {
+      -webkit-text-decoration-line: underline;
+      text-decoration-line: underline
+    }
+
+    .opacity-30 {
+      opacity: 0.3
+    }
+
+    .opacity-50 {
+      opacity: 0.5
+    }
+
+    .drop-shadow-xl {
+      --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+      filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:mb-12 {
+        margin-bottom: 3rem
+      }
+
+      .lg\:h-\[850px\] {
+        height: 850px
+      }
+
+      .lg\:w-\[200px\] {
+        width: 200px
+      }
+
+      .lg\:bg-contain {
+        background-size: contain
+      }
+
+      .lg\:bg-top {
+        background-position: top
+      }
+
+      .lg\:text-base {
+        font-size: 1rem;
+        line-height: 1.5rem
+      }
+
+      .lg\:text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem
+      }
+
+      .lg\:leading-10 {
+        line-height: 2.5rem
+      }
+    }
+  </style>
+  <script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script>
+  <style id="atcb-global-style">
+    .atcb-modal-no-scroll {
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body.atcb-modal-no-scroll {
+      padding-right: 10px;
+    }
+
+    .atcb-attribution {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script id="atcb-schema-atcb-btn-1" type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Event",
+      "eventStatus":"https://schema.org/EventScheduled",
+      "name":"ដដដ & ថថថថ's Wedding",
+      "description":"ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ.",
+      "startDate":"2025-10-23T16:40:00+07:00",
+      "duration":"04:20",
+      "eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode",
+      "location": {
+        "@type":"VirtualLocation",
+        "url":"https://chatgpt.com/"
+      },
+      "endDate":"2025-10-23T21:00:00+07:00",
+      "organizer":{
+        "@type":"Person",
+        "name":"TheapKa.com",
+        "email":"admin@theapka.com"
+      }
+    }
+  </script>
+  <div id="theapka-template">
+    <div class="flex flex-wrap max-w-xl mx-auto">
+      <div id="theapka-cover" class="w-full h-[650px] relative bg-center bg-cover bg-no-repeat"
+        style="background-image: url('https://theapka.com/storage/01J4TYS7MK4C29A1T4EDG4V9JZ.jpg');">
+        <div class="w-full h-full opacity-50 bg-gradient-to-b from-gray-500 to-transparent"></div>
+        <div
+          class="absolute top-0 left-0 flex flex-col w-full h-full pt-12 text-2xl text-center text-white font-moulpali">
+          <div class="drop-shadow-xl">សិរីមង្គលអាពាហ៍ពិពាហ៍</div>
+          <div class="mt-10 text-3xl text-white font-dangrek">
+            <div>ដដដ</div>
+            <img src="https://theapka.com/storage/templates/chhay/images/2hearts.gif" alt="" class="h-12 mx-auto">
+            <div class="flex flex-row items-end justify-center mx-auto">
+              <span>ថថថថ</span>
+            </div>
+          </div>
+          <div class="flex-1"></div>
+          <div class="w-full max-w-xs mx-auto mb-16 text-base">
+            <span>សូមគោរពអញ្ជើញ</span>
+            <div class="mt-2">
+              <img src="https://theapka.com/storage/templates/chhay/images/frame_1.png"
+                class="w-full h-[50px] max-w-xl mx-auto">
+              <div className="-mt-[38px] text-lg font-kantumruy">
+              </div>
+            </div>
+          </div>
+
+          <div class="pb-3 text-base text-center font-dangrek bg-gradient-to-t from-gray-900 to-transparent">
+            <div class="pb-1">
+
+              <div x-data="dateFormatter(null, true)">
+                <span id="event-date" class="text-2xl" x-text="formattedDate">ថ្ងៃព្រហស្បតិ៍ ទី ២៣ ខែ តុលា ឆ្នាំ ២០២៥
+                  ម៉ោង ៤:៤០ ល្ងាច</span>
+              </div>
+
+            </div>
+            <div class="leading-8">
+              ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ</div>
+            <span></span>
+            <div class="flex justify-center">
+              <add-to-calendar-button size="1" name="ដដដ &amp; ថថថថ's Wedding" startdate="2025-10-23" starttime="16:40"
+                enddate="2025-10-23" endtime="21:00" timezone="Asia/Phnom_Penh" location="https://chatgpt.com/"
+                options="'Apple','Google','iCal','Outlook.com'" atcb-button-id="atcb-btn-1"
+                organizer="TheapKa.com|admin@theapka.com"
+                description="ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ. Powered by https://theapka.com"
+                class="add-to-calendar atcb-light"
+                style="visibility: visible; opacity: 1; position: relative; outline: none;"
+                atcb-last-event="closeList:Background Hit"><template shadowrootmode="open">
+                  <style>
+                    .atcb-button-wrapper,
+                    .atcb-list,
+                    .atcb-modal-box {
+                      font-size: var(--base-font-size-l)
+                    }
+
+                    @media (width <=991px) {
+
+                      .atcb-button-wrapper,
+                      .atcb-list,
+                      .atcb-modal-box {
+                        font-size: var(--base-font-size-m)
+                      }
+                    }
+
+                    @media (width <=575px) {
+
+                      .atcb-button-wrapper,
+                      .atcb-list,
+                      .atcb-modal-box {
+                        font-size: var(--base-font-size-s)
+                      }
+                    }
+
+                    .atcb-initialized.atcb-buttons-list {
+                      gap: var(--buttonslist-gap)
+                    }
+
+                    .atcb-button-wrapper {
+                      display: block;
+                      padding: var(--wrapper-padding);
+                      position: relative
+                    }
+
+                    .atcb-button {
+                      align-items: center;
+                      background-color: var(--btn-background);
+                      border: 1px solid var(--btn-border);
+                      border-radius: var(--btn-border-radius);
+                      box-shadow: var(--btn-shadow);
+                      box-sizing: content-box;
+                      color: var(--btn-text);
+                      cursor: pointer;
+                      display: flex;
+                      font-family: var(--font);
+                      font-size: 1em;
+                      font-weight: var(--btn-font-weight);
+                      justify-content: center;
+                      line-height: 1.5em;
+                      margin: .13em;
+                      max-width: 300px;
+                      padding: var(--btn-padding-y) var(--btn-padding-x);
+                      position: relative;
+                      text-align: center;
+                      touch-action: manipulation;
+                      user-select: none;
+                      -webkit-user-select: none;
+                      -webkit-tap-highlight-color: transparent;
+                      width: auto;
+                      z-index: 1
+                    }
+
+                    .atcb-button:not(.atcb-no-text, .atcb-modal-style, .atcb-dropoverlay, .atcb-single) {
+                      min-width: calc(11.6em - 2 * var(--btn-padding-x))
+                    }
+
+                    .atcb-button.atcb-no-text {
+                      display: flex;
+                      place-content: center center;
+                      align-items: center;
+                      height: 3em;
+                      width: 3em;
+                      padding: 0
+                    }
+
+                    .atcb-rtl .atcb-button {
+                      direction: rtl;
+                      text-align: right
+                    }
+
+                    .atcb-button:focus-visible {
+                      outline: 2px solid var(--accent-color)
+                    }
+
+                    .atcb-button:not([disabled]):focus,
+                    .atcb-button:not([disabled]):hover {
+                      background-color: var(--btn-hover-background);
+                      border-color: var(--btn-hover-border);
+                      box-shadow: var(--btn-hover-shadow);
+                      color: var(--btn-hover-text);
+                      margin: 0;
+                      padding: calc(var(--btn-padding-y) + .13em) calc(var(--btn-padding-x) + .13em)
+                    }
+
+                    .atcb-button.atcb-active:not(.atcb-modal-style, .atcb-dropoverlay) {
+                      z-index: 15000000
+                    }
+
+                    .atcb-button.atcb-active:not(.atcb-modal-style, .atcb-dropoverlay),
+                    .atcb-button.atcb-single:not([disabled]):focus,
+                    .atcb-button.atcb-single:not([disabled]):hover {
+                      background-color: var(--btn-hover-background);
+                      border-color: var(--btn-hover-border);
+                      box-shadow: var(--btn-active-shadow);
+                      color: var(--btn-hover-text);
+                      margin: 0;
+                      padding: calc(var(--btn-padding-y) + .13em) calc(var(--btn-padding-x) + .13em)
+                    }
+
+                    .atcb-button:not([disabled]).atcb-no-text.atcb-active,
+                    .atcb-button:not([disabled]).atcb-no-text:focus,
+                    .atcb-button:not([disabled]).atcb-no-text:hover {
+                      height: 3.26em;
+                      width: 3.26em;
+                      padding: 0 !important
+                    }
+
+                    .atcb-button.atcb-active.atcb-dropoverlay {
+                      z-index: 14000090
+                    }
+
+                    .atcb-icon {
+                      flex-grow: 0;
+                      flex-shrink: 0;
+                      height: 1em;
+                      line-height: 1em;
+                      margin-right: .8em;
+                      width: 1em
+                    }
+
+                    .atcb-rtl .atcb-icon {
+                      margin-right: 0;
+                      margin-left: .8em
+                    }
+
+                    .atcb-no-text .atcb-icon {
+                      margin-right: 0;
+                      margin-left: 0
+                    }
+
+                    .atcb-icon svg {
+                      fill: currentcolor;
+                      height: 100%;
+                      width: 100%
+                    }
+
+                    .atcb-text {
+                      overflow-wrap: anywhere
+                    }
+
+                    .atcb-dropdown-anchor {
+                      bottom: 4px;
+                      height: 1px;
+                      width: 100%;
+                      opacity: 0;
+                      position: absolute
+                    }
+
+                    .atcb-list-wrapper {
+                      box-sizing: border-box;
+                      font-weight: var(--list-font-weight);
+                      padding: 0 4px;
+                      position: absolute;
+                      z-index: 14000090
+                    }
+
+                    .atcb-list-wrapper.atcb-dropoverlay {
+                      z-index: 15000000;
+                      max-width: max-content
+                    }
+
+                    .atcb-list {
+                      background-color: var(--list-background);
+                      border-radius: 0 0 var(--list-border-radius) var(--list-border-radius);
+                      box-sizing: border-box;
+                      box-shadow: var(--list-shadow);
+                      color: var(--list-text);
+                      display: block;
+                      font-family: var(--font);
+                      min-width: 100%;
+                      position: relative;
+                      user-select: none;
+                      -webkit-user-select: none;
+                      width: fit-content
+                    }
+
+                    .atcb-list-item {
+                      align-items: center;
+                      background-color: var(--list-background);
+                      box-sizing: border-box;
+                      cursor: pointer;
+                      display: flex;
+                      font-size: 1em;
+                      line-height: 1.75em;
+                      padding: var(--list-padding);
+                      text-align: left;
+                      touch-action: manipulation;
+                      -webkit-tap-highlight-color: transparent
+                    }
+
+                    .atcb-rtl .atcb-list-item {
+                      direction: rtl;
+                      text-align: right
+                    }
+
+                    .atcb-list-item:hover {
+                      background-color: var(--list-hover-background);
+                      color: var(--list-hover-text)
+                    }
+
+                    .atcb-list-item:focus-visible {
+                      background-color: var(--list-hover-background);
+                      color: var(--accent-color);
+                      outline: 0
+                    }
+
+                    .atcb-list-item:last-child {
+                      border-radius: 0 0 var(--list-border-radius) var(--list-border-radius)
+                    }
+
+                    .atcb-dropup .atcb-list-item:last-child {
+                      border-radius: 0;
+                      padding-bottom: calc(var(--list-padding) + .45em)
+                    }
+
+                    .atcb-dropoverlay .atcb-list .atcb-list-item:first-child,
+                    .atcb-dropup .atcb-list,
+                    .atcb-dropup .atcb-list-item:first-child,
+                    .atcb-list.atcb-modal .atcb-list-item:first-child {
+                      border-radius: var(--list-border-radius) var(--list-border-radius) 0 0
+                    }
+
+                    .atcb-dropoverlay .atcb-list .atcb-list-item:only-child,
+                    .atcb-list.atcb-modal .atcb-list-item:only-child {
+                      border-radius: var(--list-border-radius)
+                    }
+
+                    .atcb-list.atcb-generated-button:not(.atcb-modal) .atcb-list-item:first-child {
+                      padding-top: calc(var(--list-padding) + .45em)
+                    }
+
+                    .atcb-dropoverlay .atcb-list.atcb-generated-button:not(.atcb-modal) .atcb-list-item:first-child,
+                    .atcb-dropup .atcb-list.atcb-generated-button:not(.atcb-modal) .atcb-list-item:first-child {
+                      padding-top: var(--list-padding)
+                    }
+
+                    .atcb-dropoverlay .atcb-list,
+                    .atcb-list.atcb-modal {
+                      border-radius: var(--list-border-radius)
+                    }
+
+                    .atcb-list.atcb-modal {
+                      box-shadow: var(--list-modal-shadow)
+                    }
+
+                    .atcb-list-item .atcb-icon {
+                      margin: 0 auto
+                    }
+
+                    .atcb-list-item .atcb-icon+.atcb-text {
+                      margin-left: .7em;
+                      width: 100%
+                    }
+
+                    .atcb-rtl .atcb-list-item .atcb-icon+.atcb-text {
+                      margin-left: 0;
+                      margin-right: .7em
+                    }
+
+                    .atcb-list-item-close {
+                      background-color: var(--list-close-background)
+                    }
+
+                    .atcb-list-item.atcb-list-item-close:not(:focus-visible) {
+                      color: var(--list-close-text)
+                    }
+
+                    .atcb-list-item-close svg {
+                      fill: currentcolor
+                    }
+
+                    .atcb-modal {
+                      display: block;
+                      margin: auto;
+                      width: auto;
+                      min-width: auto;
+                      position: relative;
+                      z-index: 14000090
+                    }
+
+                    .atcb-modal-box {
+                      filter: var(--modal-shadow);
+                      color: var(--modal-text);
+                      cursor: default;
+                      box-sizing: border-box;
+                      font-family: var(--font);
+                      line-height: 1.5em;
+                      text-align: var(--modal-text-align);
+                      user-select: none;
+                      -webkit-user-select: none;
+                      touch-action: manipulation;
+                      width: 100%;
+                      margin-bottom: 20px;
+                      -webkit-tap-highlight-color: transparent
+                    }
+
+                    @media (width > 575px) {
+                      .atcb-modal-box {
+                        width: 32em
+                      }
+                    }
+
+                    .atcb-modal-box.atcb-rtl {
+                      text-align: var(--modal-text-align-rtl);
+                      direction: rtl;
+                      padding: 1.25em 1em 1.25em 2em
+                    }
+
+                    .atcb-modal-icon {
+                      height: 2.5em;
+                      width: 2.5em;
+                      border-radius: 100%;
+                      background-color: var(--modal-background);
+                      padding: 1.75em;
+                      margin: auto
+                    }
+
+                    .atcb-modal-icon svg {
+                      fill: currentcolor;
+                      height: 100%;
+                      width: 100%
+                    }
+
+                    .atcb-modal-headline {
+                      background-color: var(--modal-background);
+                      border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+                      font-size: 1.3em;
+                      font-weight: 600;
+                      line-height: 1.5em;
+                      padding: 1.8em 1.5em 1.3em;
+                      text-transform: var(--modal-headline-text-transform);
+                      text-align: var(--modal-headline-text-align)
+                    }
+
+                    .atcb-modal-icon+.atcb-modal-headline {
+                      margin-top: -2.6em;
+                      padding-top: 2.6em
+                    }
+
+                    .atcb-modal-content {
+                      background-color: var(--modal-background);
+                      font-size: 1em;
+                      padding: .3em 2em 2.2em
+                    }
+
+                    .atcb-modal-content ol,
+                    .atcb-modal-content ul {
+                      margin: 1em auto;
+                      text-align: left;
+                      width: fit-content
+                    }
+
+                    .atcb-rtl .atcb-modal-content ol,
+                    .atcb-rtl .atcb-modal-content ul {
+                      text-align: right
+                    }
+
+                    .atcb-modal-content-subevents {
+                      margin: auto;
+                      width: fit-content
+                    }
+
+                    .atcb-modal-icon+.atcb-modal-content {
+                      border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+                      margin-top: -2.6em;
+                      padding-top: 2.6em
+                    }
+
+                    @media (width <=575px) {
+                      .atcb-modal-headline {
+                        padding: 1.8em 1em 1em
+                      }
+
+                      .atcb-modal-content {
+                        padding: .3em 1.5em 1.5em
+                      }
+
+                      .atcb-modal-icon+.atcb-modal-content {
+                        padding-top: 1.8em
+                      }
+                    }
+
+                    .atcb-modal-buttons {
+                      background-color: var(--modal-btn-bar);
+                      border-radius: 0 0 var(--modal-border-radius) var(--modal-border-radius);
+                      box-sizing: border-box;
+                      padding: .6em;
+                      text-align: center;
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      flex-flow: row-reverse wrap;
+                      align-items: center
+                    }
+
+                    a.atcb-modal-btn,
+                    button.atcb-modal-btn {
+                      background-color: var(--modal-btn-secondary-background);
+                      border: 0;
+                      border-radius: var(--btn-border-radius);
+                      box-shadow: var(--modal-btn-shadow);
+                      color: var(--modal-btn-secondary-text);
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: var(--font);
+                      font-size: .9em;
+                      font-weight: var(--modal-btn-font-weight);
+                      line-height: 1em;
+                      margin: .625em;
+                      padding: 1em 1.25em;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      touch-action: manipulation;
+                      user-select: none;
+                      -webkit-user-select: none;
+                      -webkit-tap-highlight-color: transparent
+                    }
+
+                    a.atcb-modal-btn.btn-small,
+                    button.atcb-modal-btn.btn-small {
+                      padding: .6em .8em
+                    }
+
+                    a.atcb-modal-btn.atcb-modal-btn-primary,
+                    button.atcb-modal-btn.atcb-modal-btn-primary {
+                      background-color: var(--modal-btn-background);
+                      color: var(--modal-btn-text)
+                    }
+
+                    a.atcb-modal-btn.atcb-modal-btn-border,
+                    button.atcb-modal-btn.atcb-modal-btn-border {
+                      border: 1px solid var(--modal-btn-border)
+                    }
+
+                    a.atcb-modal-btn:focus-visible,
+                    button.atcb-modal-btn:focus-visible {
+                      background-color: var(--modal-btn-hover-background);
+                      outline: 2px solid var(--accent-color)
+                    }
+
+                    a.atcb-modal-btn:disabled,
+                    button.atcb-button:disabled,
+                    button.atcb-modal-btn:disabled,
+                    button.atcb-subevent-btn:disabled {
+                      cursor: not-allowed;
+                      opacity: .75;
+                      filter: brightness(95%);
+                      border-style: dashed;
+                      box-shadow: none
+                    }
+
+                    a.atcb-modal-btn:not([disabled]):hover,
+                    button.atcb-modal-btn:not([disabled]):hover {
+                      background-color: var(--modal-btn-hover-background);
+                      box-shadow: var(--modal-btn-hover-shadow);
+                      color: var(--modal-btn-hover-text);
+                      text-decoration: none
+                    }
+
+                    .atcb-subevent-btn {
+                      display: flex;
+                      align-items: flex-start;
+                      cursor: pointer;
+                      font-family: var(--font);
+                      font-size: 1em;
+                      box-shadow: var(--date-btn-shadow);
+                      background-color: var(--date-btn-background);
+                      border: 0;
+                      border-radius: 7px 4px 4px 7px;
+                      padding: 0;
+                      margin: 0;
+                      touch-action: manipulation;
+                      position: relative;
+                      user-select: none;
+                      -webkit-user-select: none;
+                      -webkit-tap-highlight-color: transparent;
+                      width: 100%
+                    }
+
+                    .atcb-subevent-btn:hover {
+                      align-items: center
+                    }
+
+                    .atcb-subevent-btn:focus,
+                    .atcb-subevent-btn:hover {
+                      background-color: var(--date-btn-hover-background);
+                      box-shadow: var(--date-btn-hover-shadow)
+                    }
+
+                    .atcb-subevent-btn:focus-visible {
+                      outline: 2px solid var(--accent-color)
+                    }
+
+                    .atcb-subevent-btn+.atcb-subevent-btn {
+                      margin-top: 30px
+                    }
+
+                    .atcb-date-btn-left {
+                      border-radius: 4px 0 0 4px;
+                      align-self: stretch;
+                      background-color: var(--date-btn-cal-background);
+                      padding: .7em .8em .8em;
+                      width: 2.7em;
+                      align-items: center;
+                      display: flex;
+                      flex-direction: column;
+                      flex-shrink: 0
+                    }
+
+                    .atcb-rtl .atcb-date-btn-left {
+                      border-radius: 0 4px 4px 0
+                    }
+
+                    .atcb-subevent-btn:hover .atcb-date-btn-left {
+                      opacity: .8
+                    }
+
+                    .atcb-date-btn-day {
+                      color: var(--date-btn-cal-day-text);
+                      font-weight: 400;
+                      font-size: 2em;
+                      word-break: keep-all;
+                      padding-bottom: .1em
+                    }
+
+                    .atcb-initialized[lang=ja] .atcb-date-btn-day,
+                    .atcb-initialized[lang=ko] .atcb-date-btn-day,
+                    .atcb-initialized[lang=zh] .atcb-date-btn-day {
+                      font-size: 1.3em
+                    }
+
+                    .atcb-date-btn-month {
+                      color: var(--date-btn-cal-month-text);
+                      font-weight: 600;
+                      font-size: 1em
+                    }
+
+                    .atcb-date-btn-right {
+                      position: relative;
+                      color: var(--date-btn-text);
+                      min-width: 13.5em;
+                      overflow-wrap: anywhere
+                    }
+
+                    .atcb-subevent-btn .atcb-date-btn-right {
+                      width: 100%
+                    }
+
+                    .atcb-date-btn-details {
+                      opacity: 1;
+                      padding: .7em .8em;
+                      text-align: left
+                    }
+
+                    .atcb-rtl .atcb-date-btn-details {
+                      text-align: right
+                    }
+
+                    .atcb-date-btn-hover {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      opacity: 0;
+                      height: 100%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-weight: 600;
+                      font-size: 1em;
+                      padding: .4em .7em;
+                      box-sizing: border-box
+                    }
+
+                    .atcb-subevent-btn:hover .atcb-date-btn-details {
+                      opacity: 0
+                    }
+
+                    .atcb-subevent-btn:hover .atcb-date-btn-hover {
+                      opacity: 1
+                    }
+
+                    .atcb-date-btn-headline {
+                      font-weight: 600;
+                      font-size: .9em;
+                      margin-bottom: .5em;
+                      overflow: hidden;
+                      display: -webkit-box;
+                      -webkit-line-clamp: var(--date-btn-headline-line-clamp);
+                      line-clamp: var(--date-btn-headline-line-clamp)
+                    }
+
+                    .atcb-date-btn-content {
+                      display: flex;
+                      align-items: flex-start;
+                      font-size: .8em;
+                      color: var(--date-btn-text-secondary)
+                    }
+
+                    .atcb-date-btn-content.atcb-date-btn-cancelled {
+                      color: var(--form-error);
+                      font-weight: 700
+                    }
+
+                    .atcb-date-btn-content-location {
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap
+                    }
+
+                    .atcb-date-btn-content-icon {
+                      display: inline-block;
+                      height: .9em;
+                      margin: .075em .4em 0 0;
+                      width: .9em;
+                      flex-shrink: 0
+                    }
+
+                    .atcb-rtl .atcb-date-btn-content-icon {
+                      margin-right: 0;
+                      margin-left: .4em
+                    }
+
+                    .atcb-initialized[lang=ja] .atcb-date-btn-content:not(.atcb-date-btn-content-location) .atcb-date-btn-content-icon,
+                    .atcb-initialized[lang=ko] .atcb-date-btn-content:not(.atcb-date-btn-content-location) .atcb-date-btn-content-icon,
+                    .atcb-initialized[lang=zh] .atcb-date-btn-content:not(.atcb-date-btn-content-location) .atcb-date-btn-content-icon {
+                      margin-top: .15em
+                    }
+
+                    .atcb-date-btn-content-icon svg {
+                      height: 100%;
+                      fill: currentcolor;
+                      width: 100%
+                    }
+
+                    .atcb-date-btn-content+.atcb-date-btn-content {
+                      margin-top: .3em;
+                      padding-right: .6em
+                    }
+
+                    .atcb-date-btn-content-text span:not(.atcb-icon-ical) {
+                      padding-right: .3em;
+                      display: inline-block
+                    }
+
+                    .atcb-date-btn-plus {
+                      position: absolute;
+                      border-radius: 4px 0;
+                      bottom: 0;
+                      right: 0;
+                      background: var(--date-btn-cal-background);
+                      color: var(--date-btn-cal-day-text);
+                      display: flex;
+                      font-size: .9em;
+                      font-weight: 400;
+                      height: 1em;
+                      width: 1em;
+                      padding: .1em;
+                      justify-content: center;
+                      align-items: center
+                    }
+
+                    .atcb-button:focus-visible .atcb-date-btn-plus,
+                    .atcb-subevent-btn:focus-visible .atcb-date-btn-plus {
+                      background-color: var(--accent-color)
+                    }
+
+                    .atcb-checkmark {
+                      display: none
+                    }
+
+                    .atcb-saved .atcb-checkmark {
+                      box-sizing: content-box;
+                      color: var(--btn-text);
+                      display: block;
+                      position: absolute;
+                      top: -.9em;
+                      right: -.5em;
+                      padding: .5em;
+                      border-radius: 100%;
+                      height: 1.2em
+                    }
+
+                    .atcb-button.atcb-active:not(.atcb-modal-style, .atcb-dropoverlay) .atcb-checkmark,
+                    .atcb-button.atcb-single:focus .atcb-checkmark,
+                    .atcb-button.atcb-single:hover .atcb-checkmark {
+                      top: -.77em;
+                      right: -.37em
+                    }
+
+                    .atcb-checkmark svg {
+                      height: 100%;
+                      filter: var(--checkmark-background);
+                      width: auto
+                    }
+
+                    #atcb-bgoverlay {
+                      backdrop-filter: blur(2px);
+                      -webkit-backdrop-filter: blur(2px);
+                      background-color: var(--overlay-background);
+                      border: 0;
+                      box-sizing: border-box;
+                      display: flex;
+                      height: calc(100vh + 100px);
+                      inset-inline: 0;
+                      left: 0;
+                      right: 0;
+                      top: 0;
+                      min-height: 100%;
+                      min-width: 100%;
+                      overflow-y: auto;
+                      padding: 20px 20px 130px;
+                      position: fixed;
+                      width: 100vw;
+                      z-index: 14000000
+                    }
+
+                    #atcb-bgoverlay:not(dialog) {
+                      animation: atcb-bgoverlay-animate .2s ease 0s 1 normal forwards;
+                      opacity: 0
+                    }
+
+                    #atcb-bgoverlay.atcb-no-bg {
+                      animation: none;
+                      backdrop-filter: none;
+                      -webkit-backdrop-filter: none;
+                      opacity: 1;
+                      background-color: transparent
+                    }
+
+                    @keyframes atcb-bgoverlay-animate {
+                      0% {
+                        opacity: 0
+                      }
+
+                      100% {
+                        opacity: 1
+                      }
+                    }
+
+                    .atcb-icon-outlookcom,
+                    .atcb-icon.atcb-icon-ms365 {
+                      padding-bottom: .05em
+                    }
+
+                    .atcb-icon.atcb-icon-apple,
+                    .atcb-icon.atcb-icon-ical {
+                      padding-bottom: .15em
+                    }
+
+                    .atcb-icon.atcb-icon-trigger {
+                      padding-bottom: .15em
+                    }
+
+                    .atcb-icon.atcb-icon-rsvp {
+                      height: 1.5em;
+                      width: 1.5em
+                    }
+
+                    .atcb-icon.atcb-icon-apple svg {
+                      fill: currentcolor
+                    }
+
+                    .atcb-icon.atcb-icon-ical svg {
+                      fill: currentcolor
+                    }
+
+                    .atcb-icon.atcb-icon-ms365 svg {
+                      fill: var(--icon-ms365-color)
+                    }
+
+                    .atcb-icon.atcb-icon-yahoo svg {
+                      fill: var(--icon-yahoo-color)
+                    }
+
+                    .atcb-icon.atcb-icon-google svg,
+                    .atcb-icon.atcb-icon-msteams svg,
+                    .atcb-icon.atcb-icon-outlookcom svg {
+                      filter: var(--icon-filter)
+                    }
+
+                    .rsvp-inline-wrapper {
+                      filter: none;
+                      min-width: 100%;
+                      margin-bottom: 0
+                    }
+
+                    .atcb-modal-content.no-headline {
+                      border-radius: var(--modal-border-radius) var(--modal-border-radius) 0 0;
+                      padding-top: 1.8em
+                    }
+
+                    .rsvp-inline-wrapper .atcb-modal-content,
+                    .rsvp-inline-wrapper .atcb-modal-headline,
+                    .rsvp-inline-wrapper.atcb-modal-box {
+                      background-color: transparent;
+                      border-radius: 0;
+                      box-sizing: border-box;
+                      padding: 0;
+                      width: 100%
+                    }
+
+                    .rsvp-inline-wrapper .atcb-modal-headline {
+                      padding-bottom: 1.5em
+                    }
+
+                    .pro {
+                      text-align: center
+                    }
+
+                    .pro a:not(.atcb-modal-btn),
+                    .pro a:not(.atcb-modal-btn):active,
+                    .pro a:not(.atcb-modal-btn):visited {
+                      color: var(--modal-btn-text);
+                      text-decoration: underline;
+                      text-decoration-thickness: 2px;
+                      text-decoration-color: var(--accent-color)
+                    }
+
+                    .pro a:not(.atcb-modal-btn):hover {
+                      color: var(--accent-color);
+                      text-decoration: none
+                    }
+
+                    .pro .pro-share-buttons {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center
+                    }
+
+                    .pro #rsvp-atcb {
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: .4em;
+                      justify-content: center
+                    }
+
+                    .pro-form {
+                      text-align: left
+                    }
+
+                    .pro-form:not(.no-intro) {
+                      border-top: 1px solid var(--modal-btn-border);
+                      margin-top: 1.5em;
+                      padding-top: 1.5em
+                    }
+
+                    .pro-form.no-intro:not(.no-headline) {
+                      padding-top: .5em
+                    }
+
+                    .pro-field+.pro-field {
+                      padding-top: 1.3em
+                    }
+
+                    .pro-field-type-label+.pro-field-type-radio {
+                      padding-top: 0
+                    }
+
+                    .pro-field-type-checkbox,
+                    .pro-field-type-radio div {
+                      align-items: center;
+                      display: flex
+                    }
+
+                    .pro-field-type-checkbox input,
+                    .pro-field-type-radio input {
+                      cursor: pointer
+                    }
+
+                    .pro-field label {
+                      display: block;
+                      font-size: .9em;
+                      opacity: .7
+                    }
+
+                    .pro-field-type-checkbox label,
+                    .pro-field-type-radio label {
+                      cursor: pointer;
+                      opacity: .8;
+                      padding-left: .3em
+                    }
+
+                    .pro-field input[type=email],
+                    .pro-field input[type=number],
+                    .pro-field input[type=text] {
+                      background-color: var(--input-background);
+                      border: 1px solid var(--modal-btn-border);
+                      border-radius: var(--input-border-radius);
+                      box-sizing: border-box;
+                      caret-color: var(--accent-color);
+                      color: var(--modal-text);
+                      font-size: .9em;
+                      opacity: .8;
+                      padding: .7em;
+                      transition: all .1s ease-in-out;
+                      width: 100%
+                    }
+
+                    .pro-field input[type=checkbox],
+                    .pro-field input[type=radio] {
+                      accent-color: var(--accent-color);
+                      height: 1.2rem;
+                      opacity: .8;
+                      transition: all .1s ease-in-out;
+                      width: 1.2em
+                    }
+
+                    .pro-field input:disabled,
+                    .pro-field input:disabled+label {
+                      cursor: not-allowed;
+                      opacity: .75;
+                      filter: brightness(95%)
+                    }
+
+                    .pro-field input:not([disabled]):hover {
+                      opacity: 1
+                    }
+
+                    .pro-field input[type=email]:focus,
+                    .pro-field input[type=number]:focus,
+                    .pro-field input[type=text]:focus {
+                      border-color: var(--accent-color);
+                      outline: 1px solid var(--accent-color)
+                    }
+
+                    .pro-field input[type=checkbox]:focus,
+                    .pro-field input[type=radio]:focus {
+                      outline-color: var(--accent-color);
+                      outline-width: 2px
+                    }
+
+                    #submit-error {
+                      color: var(--form-error);
+                      display: none;
+                      font-weight: 700;
+                      padding-top: 1.5em;
+                      text-align: center
+                    }
+
+                    .pro-form.form-error #submit-error {
+                      display: block
+                    }
+
+                    .pro-field input.error {
+                      accent-color: var(--form-error);
+                      border: 2px solid var(--form-error)
+                    }
+
+                    .pro-field input.error+label,
+                    .pro-field:has(input.error) label {
+                      color: var(--form-error);
+                      opacity: 1
+                    }
+
+                    #rsvp-status-group {
+                      border-bottom: 1px solid var(--modal-btn-border);
+                      font-weight: 700;
+                      margin-bottom: 1.5em;
+                      padding-bottom: 2em;
+                      text-align: center
+                    }
+
+                    #rsvp-status-group .pro-field {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: 3%;
+                      justify-content: center;
+                      margin-top: 1em
+                    }
+
+                    @media (width <=575px) {
+                      #rsvp-status-group .pro-field {
+                        flex-direction: column;
+                        gap: 1.2em
+                      }
+
+                      #rsvp-status-group .pro-field div {
+                        width: 80%
+                      }
+                    }
+
+                    #rsvp-status-group .pro-field div {
+                      min-width: 28%;
+                      position: relative
+                    }
+
+                    #rsvp-status-group input {
+                      opacity: 0;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      height: 100%;
+                      width: 100%;
+                      margin: 0;
+                      cursor: pointer
+                    }
+
+                    #rsvp-status-group label {
+                      align-items: center;
+                      border: 1px solid var(--modal-btn-text);
+                      border-radius: var(--input-border-radius);
+                      box-shadow: var(--btn-shadow);
+                      color: var(--modal-btn-text);
+                      display: flex;
+                      flex-direction: column;
+                      font-weight: 700;
+                      text-transform: uppercase;
+                      justify-content: center;
+                      opacity: .6;
+                      padding: .8em;
+                      transition: all .1s ease-in-out;
+                      width: 100%
+                    }
+
+                    #rsvp-status-group label.status-confirmed {
+                      border-color: var(--form-success);
+                      color: var(--form-success)
+                    }
+
+                    #rsvp-status-group label.status-declined {
+                      border-color: var(--form-error);
+                      color: var(--form-error)
+                    }
+
+                    #rsvp-status-group input:checked+label {
+                      background-color: var(--modal-text);
+                      box-shadow: var(--btn-hover-shadow);
+                      color: var(--status-active-text);
+                      opacity: 1;
+                      transform: scale(1.08)
+                    }
+
+                    #rsvp-status-group input:focus-visible+label {
+                      outline: 2px solid var(--accent-color);
+                      outline-offset: 2px
+                    }
+
+                    #rsvp-status-group input:not([disabled])+label:hover,
+                    #rsvp-status-group input:not([disabled]):hover+label {
+                      box-shadow: var(--btn-hover-shadow);
+                      opacity: 1;
+                      transform: scale(1.08)
+                    }
+
+                    #rsvp-status-group input:checked+label.status-confirmed {
+                      background-color: var(--form-success)
+                    }
+
+                    #rsvp-status-group input:checked+label.status-declined {
+                      background-color: var(--form-error)
+                    }
+
+                    #rsvp-success-msg,
+                    #rsvp-success-msg-demo,
+                    #rsvp-success-msg-doi,
+                    #rsvp-success-msg-email,
+                    #ty-success-msg {
+                      display: none;
+                      font-weight: 700;
+                      line-height: 1.6em;
+                      padding-top: .5em;
+                      text-align: center
+                    }
+
+                    #rsvp-success-msg,
+                    #rsvp-success-msg-demo,
+                    #ty-success-msg {
+                      padding: 1.5em 0
+                    }
+
+                    #rsvp-success-msg-demo,
+                    #rsvp-success-msg-email {
+                      color: var(--form-success)
+                    }
+
+                    #rsvp-success-msg-doi {
+                      color: var(--form-error);
+                      padding-top: 1em;
+                      font-size: .8em
+                    }
+
+                    #pro-form-submit {
+                      display: block;
+                      margin: auto;
+                      min-width: 150px
+                    }
+
+                    .pro-form-fine {
+                      font-size: .8em;
+                      margin: .5em auto 1em;
+                      opacity: .5;
+                      text-align: center
+                    }
+
+                    .pro-form.form-error .pro-form-fine {
+                      opacity: 0
+                    }
+
+                    .pro-waiting {
+                      background-color: var(--modal-btn-background);
+                      border: 1px solid var(--modal-btn-border);
+                      border-radius: var(--btn-border-radius);
+                      box-sizing: border-box;
+                      color: var(--modal-btn-text);
+                      cursor: wait;
+                      display: none;
+                      line-height: .5em;
+                      margin: auto;
+                      min-width: 150px;
+                      padding: .5em 1.25em 1.2em;
+                      text-align: center;
+                      user-select: none;
+                      -webkit-user-select: none;
+                      -webkit-tap-highlight-color: transparent;
+                      width: fit-content
+                    }
+
+                    @media (width > 575px) {
+
+                      #pro-form-submit,
+                      .pro-waiting {
+                        min-width: 200px
+                      }
+                    }
+
+                    .pro-waiting span:not(.atcb-icon-ical) {
+                      animation-name: blink;
+                      animation-duration: 1s;
+                      animation-iteration-count: infinite;
+                      animation-fill-mode: both;
+                      font-size: 2.5em
+                    }
+
+                    .pro-field label span:not(.atcb-icon-ical) {
+                      color: var(--form-error);
+                      font-weight: 700;
+                      padding-left: 2px
+                    }
+
+                    .pro-waiting span:not(.atcb-icon-ical):nth-child(2) {
+                      animation-delay: .15s
+                    }
+
+                    .pro-waiting span:not(.atcb-icon-ical):nth-child(3) {
+                      animation-delay: .3s
+                    }
+
+                    @keyframes blink {
+                      0% {
+                        opacity: .2
+                      }
+
+                      20% {
+                        opacity: 1
+                      }
+
+                      100% {
+                        opacity: .2
+                      }
+                    }
+
+                    .pro #rsvp-sent-content {
+                      align-items: center;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 1.5em
+                    }
+
+                    #rsvp-status-group span {
+                      color: inherit
+                    }
+
+                    .atcb-modal-content .pro p:not(.pro-form-fine) {
+                      margin: 0
+                    }
+
+                    .atcb-modal-content .pro p.pro-pt {
+                      margin-top: 1.5em
+                    }
+
+                    .atcb-modal-content .pro .pro-field p {
+                      font-size: .9em
+                    }
+
+                    .pro .btn-flex {
+                      align-items: center;
+                      display: flex
+                    }
+
+                    .pro .atcb-modal-btn svg {
+                      fill: none;
+                      height: 1.5em;
+                      margin-right: .5em;
+                      stroke: currentcolor;
+                      width: auto
+                    }
+
+                    #atcb-reference {
+                      box-sizing: border-box;
+                      color: #000;
+                      filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff);
+                      height: auto;
+                      padding: 8px 0;
+                      text-align: center;
+                      transform: translate3d(0, 0, 0);
+                      width: 100%;
+                      z-index: 15000000
+                    }
+
+                    #atcb-reference.fixed-ref {
+                      position: fixed;
+                      bottom: 10px;
+                      right: 40px;
+                      width: auto
+                    }
+
+                    #atcb-reference.atcb-dropup {
+                      position: absolute;
+                      margin-top: -1px
+                    }
+
+                    .atcb-modal-host-initialized #atcb-reference.atcb-dropup {
+                      text-align: left
+                    }
+
+                    :host(.atcb-dark) #atcb-reference {
+                      color: #fff;
+                      filter: drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000)
+                    }
+
+                    #atcb-reference a,
+                    #atcb-reference a:active,
+                    #atcb-reference a:visited {
+                      opacity: .8;
+                      width: 150px;
+                      max-width: 100%;
+                      margin: auto;
+                      display: inline-block;
+                      text-decoration: none
+                    }
+
+                    #atcb-reference a:hover {
+                      opacity: 1;
+                      text-decoration: none
+                    }
+
+                    #atcb-reference svg {
+                      fill: var(--list-text)
+                    }
+                  </style>
+                  <style>
+                    .atcb-initialized {
+                      display: block;
+                      position: relative;
+                      width: fit-content;
+                    }
+
+                    .atcb-initialized.atcb-inline {
+                      display: inline-block;
+                    }
+
+                    .atcb-initialized.atcb-buttons-list {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      gap: var(--buttonslist-gap);
+                    }
+
+                    .atcb-hidden {
+                      display: none;
+                    }
+                  </style>
+                  <div class="atcb-initialized" lang="en">
+                    <div class="atcb-button-wrapper" part="atcb-button-wrapper"
+                      style="--base-font-size-l: 11px; --base-font-size-m: 11px; --base-font-size-s: 11px;"><button
+                        class="atcb-button" part="atcb-button" type="button" aria-expanded="false" id="atcb-btn-1"
+                        aria-label="Add to Calendar: ដដដ &amp; ថថថថ's Wedding">
+                        <div class="atcb-icon atcb-icon-trigger" part="atcb-button-icon"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200.016">
+                            <path
+                              d="M132.829 7.699c0-4.248 4.199-7.699 9.391-7.699s9.391 3.451 9.391 7.699v33.724c0 4.248-4.199 7.699-9.391 7.699s-9.391-3.451-9.391-7.699zm-5.941 123.747c2.979 0 5.404 2.425 5.404 5.404s-2.425 5.404-5.404 5.404l-21.077-.065-.065 21.045c0 2.979-2.425 5.404-5.404 5.404s-5.404-2.425-5.404-5.404l.065-21.061-21.045-.081c-2.979 0-5.404-2.425-5.404-5.404s2.425-5.404 5.404-5.404l21.061.065.065-21.045c0-2.979 2.425-5.404 5.404-5.404s5.404 2.425 5.404 5.404l-.065 21.077 21.061.065zM48.193 7.699C48.193 3.451 52.393 0 57.585 0s9.391 3.451 9.391 7.699v33.724c0 4.248-4.199 7.699-9.391 7.699s-9.391-3.451-9.391-7.699zM10.417 73.763h179.167V34.945c0-1.302-.537-2.49-1.4-3.369-.863-.863-2.051-1.4-3.369-1.4h-17.171c-2.881 0-5.208-2.327-5.208-5.208s2.327-5.208 5.208-5.208h17.171c4.183 0 7.975 1.709 10.726 4.46S200 30.762 200 34.945v44.043 105.843c0 4.183-1.709 7.975-4.46 10.726s-6.543 4.46-10.726 4.46H15.186c-4.183 0-7.975-1.709-10.726-4.46C1.709 192.79 0 188.997 0 184.814V78.988 34.945c0-4.183 1.709-7.975 4.46-10.726s6.543-4.46 10.726-4.46h18.343c2.881 0 5.208 2.327 5.208 5.208s-2.327 5.208-5.208 5.208H15.186c-1.302 0-2.49.537-3.369 1.4-.863.863-1.4 2.051-1.4 3.369zm179.167 10.433H10.417v100.618c0 1.302.537 2.49 1.4 3.369.863.863 2.051 1.4 3.369 1.4h169.629c1.302 0 2.49-.537 3.369-1.4.863-.863 1.4-2.051 1.4-3.369zM82.08 30.176c-2.881 0-5.208-2.327-5.208-5.208s2.327-5.208 5.208-5.208h34.977c2.881 0 5.208 2.327 5.208 5.208s-2.327 5.208-5.208 5.208z">
+                            </path>
+                          </svg></div><span class="atcb-text" part="atcb-button-text">Add to Calendar</span>
+                        <div class="atcb-dropdown-anchor"></div>
+                        <div class="atcb-checkmark"><svg version="1.1" viewBox="0 0 87.41 79.72"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="m2.076 33.666s6.0748-0.59297 17.413 4.2983c9.3883 4.5751 11.891 8.3955 11.891 8.3955 5.38-8.65 11.11-16.6 17.16-23.9 10.412-12.578 24.613-22.448 24.613-22.448l14.257-0.012228s-19.308 19.294-32.483 38.51-22.877 41.21-22.877 41.21-9.3948-18.164-14.53-24.53-10.77-11.59-17.52-16.22z"
+                              fill="#45b555"></path>
+                          </svg></div>
+                      </button></div>
+                  </div>
+                </template></add-to-calendar-button>
+            </div>
+          </div>
+
+          <div class="absolute bottom-3 left-5">
+            <div class="w-full h-[50px]">
+              <div class="down-arrow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full py-4 text-center">
+        <div class="relative max-w-xl px-3 mx-auto">
+          <img src="https://theapka.com/storage/templates/chhay/images/header_3.png" class="h-6 m-auto" alt="">
+          <div class="py-12">
+            <div class="mb-8 text-base font-moulpali lg:text-xl">
+              យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ
+            </div>
+            <div class="px-5 text-sm leading-8 font-kantumruy lg:text-base">
+              <div>
+                ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា
+                អញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធិពរជ័យ
+                សិរីសួស្តី ជ័យមង្គល ក្នុងពិធីអាពាហ៍ពិពាហ៍ របស់យើងខ្ញុំទាំងពីរ។
+              </div>
+            </div>
+          </div>
+        </div>
+        <img src="https://theapka.com/storage/templates/chhay/images/header_4.png" class="h-6 m-auto" alt="">
+      </div>
+      <div id="theapka-schedule-background"
+        class="w-full text-center h-[750px] lg:h-[850px] bg-center lg:bg-top  bg-cover lg:bg-contain bg-no-repeat relative"
+        style="background-image: url('https://theapka.com/storage/01J4TYV5XJP7PKF7RPH3KE6238.jpg');">
+        <div class="z-0 w-full h-full bg-white opacity-50"></div>
+        <div
+          class="absolute w-full max-w-xl px-3 py-8 mx-auto text-black transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-1">
+          <div class="mb-2 text-xl font-moulpali lg:mb-12">
+            កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍
+          </div>
+          <div class="mt-3 text-sm leading-8 text-left font-kantumruy lg:text-base lg:leading-10">
+
+            <div class="mt-4">
+              <span class="text-center font-moulpali" x-data="dateFormatter('2025-10-23')"
+                x-text="formattedDate">ថ្ងៃព្រហស្បតិ៍ ទី ២៣ ខែ តុលា ឆ្នាំ ២០២៥</span>
+              <div class="flex" x-data="timeFormatter('07:00:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ៧:០០ ព្រឹក</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  ជួបជុំភ្ញៀវកិត្តិយសរៀបចំពិធីហែជំនូននៅគេហដ្ឋានកូនស្រី
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('07:30:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ៧:៣០ ព្រឹក</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  ពិធីហែជំនូន ចូលរោងជ័យ និងអញ្ជើញភ្ញៀវកិត្តិយសពិសារអាហារពេលព្រឹក
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('08:15:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ៨:១៥ ព្រឹក</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  ពិធីជូនបណ្តាការ ពិសារស្លា និងបំពាក់ជញ្ជៀន
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('08:30:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ៨:៣០ ព្រឹក</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  ពិធីកាត់សក់ បង្កក់សិរី
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('10:30:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ១០:៣០ ព្រឹក</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  ពិធីសែនកុងម៉ា
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('11:00:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ១១:០០ ព្រឹក</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  សុំស្រីអនមកសំពះផ្ទឹម
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('12:00:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ១២:០០ ពេលថ្ងៃត្រង់</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  អញ្ជើញភ្ញៀវកិត្តិយសពិសារអាហារ​ថ្ងៃត្រង់
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('13:30:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ១:៣០ ល្ងាច</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  និមន្តព្រះសង្ឃចម្រើនព្រះបរិត្ត
+                </div>
+              </div>
+              <div class="flex" x-data="timeFormatter('17:00:00')">
+                <div class="w-[200px] lg:w-[200px] flex justify-between pr-2">
+                  <div x-text="formattedTime">ម៉ោង ៥:០០ ល្ងាច</div>
+                  <div>៖</div>
+                </div>
+                <div class="flex-1">
+                  អញ្ជើញភ្ញៀវកិត្តិយសពិសារភោជនាហារ
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-1 text-center">
+              <a class="font-bold" href="https://chatgpt.com/" target="_blank">ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ
+                ខេត្ត៥ថហដដដ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full my-12 text-center">
+        <div class="my-4 font-moulpali">ទីតាំងកម្មវិធីមង្គល</div>
+        <div class="relative w-full max-w-xl mx-auto mb-4 font-dangrek">
+          <div>
+            ភូមិផកដ ឃុំដដដ៣ ស្រុក៤៥ដដដ ខេត្ត៥ថហដដដ
+          </div>
+          <div class="flex justify-center mt-5 mb-5">
+            <!--?xml version="1.0" encoding="UTF-8"?-->
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="250" viewBox="0 0 250 250">
+              <rect x="0" y="0" width="250" height="250" fill="#ffffff"></rect>
+              <g transform="scale(10)">
+                <g transform="translate(0,0)">
+                  <path fill-rule="evenodd"
+                    d="M8 0.25L8 0.75A0.25 0.25 0 0 0 8.25 1L9.75 1A0.25 0.25 0 0 0 10 0.75L10 0.25A0.25 0.25 0 0 0 9.75 0L8.25 0A0.25 0.25 0 0 0 8 0.25ZM16 0.25L16 0.75A0.25 0.25 0 0 1 15.75 1L15.25 1A0.25 0.25 0 0 0 15 1.25L15 3.75A0.25 0.25 0 0 0 15.25 4L15.75 4A0.25 0.25 0 0 1 16 4.25L16 4.75A0.25 0.25 0 0 0 16.25 5L16.75 5A0.25 0.25 0 0 0 17 4.75L17 4.25A0.25 0.25 0 0 0 16.75 4L16.25 4A0.25 0.25 0 0 1 16 3.75L16 3.25A0.25 0.25 0 0 1 16.25 3L16.75 3A0.25 0.25 0 0 0 17 2.75L17 2.25A0.25 0.25 0 0 0 16.75 2L16.25 2A0.25 0.25 0 0 1 16 1.75L16 1.25A0.25 0.25 0 0 1 16.25 1L16.75 1A0.25 0.25 0 0 0 17 0.75L17 0.25A0.25 0.25 0 0 0 16.75 0L16.25 0A0.25 0.25 0 0 0 16 0.25ZM13 1.25L13 1.75A0.25 0.25 0 0 1 12.75 2L11.25 2A0.25 0.25 0 0 0 11 2.25L11 3.75A0.25 0.25 0 0 1 10.75 4L10.25 4A0.25 0.25 0 0 1 10 3.75L10 3.25A0.25 0.25 0 0 0 9.75 3L9.25 3A0.25 0.25 0 0 1 9 2.75L9 2.25A0.25 0.25 0 0 0 8.75 2L8.25 2A0.25 0.25 0 0 0 8 2.25L8 4.75A0.25 0.25 0 0 0 8.25 5L8.75 5A0.25 0.25 0 0 1 9 5.25L9 5.75A0.25 0.25 0 0 1 8.75 6L8.25 6A0.25 0.25 0 0 0 8 6.25L8 6.75A0.25 0.25 0 0 0 8.25 7L8.75 7A0.25 0.25 0 0 1 9 7.25L9 7.75A0.25 0.25 0 0 1 8.75 8L8.25 8A0.25 0.25 0 0 0 8 8.25L8 8.75A0.25 0.25 0 0 1 7.75 9L7.25 9A0.25 0.25 0 0 1 7 8.75L7 8.25A0.25 0.25 0 0 0 6.75 8L6.25 8A0.25 0.25 0 0 0 6 8.25L6 8.75A0.25 0.25 0 0 1 5.75 9L4.25 9A0.25 0.25 0 0 1 4 8.75L4 8.25A0.25 0.25 0 0 0 3.75 8L0.25 8A0.25 0.25 0 0 0 0 8.25L0 9.75A0.25 0.25 0 0 0 0.25 10L1.75 10A0.25 0.25 0 0 1 2 10.25L2 10.75A0.25 0.25 0 0 0 2.25 11L2.75 11A0.25 0.25 0 0 1 3 11.25L3 11.75A0.25 0.25 0 0 1 2.75 12L2.25 12A0.25 0.25 0 0 0 2 12.25L2 13.75A0.25 0.25 0 0 1 1.75 14L1.25 14A0.25 0.25 0 0 0 1 14.25L1 14.75A0.25 0.25 0 0 1 0.75 15L0.25 15A0.25 0.25 0 0 0 0 15.25L0 15.75A0.25 0.25 0 0 0 0.25 16L0.75 16A0.25 0.25 0 0 0 1 15.75L1 15.25A0.25 0.25 0 0 1 1.25 15L1.75 15A0.25 0.25 0 0 1 2 15.25L2 15.75A0.25 0.25 0 0 0 2.25 16L2.75 16A0.25 0.25 0 0 0 3 15.75L3 15.25A0.25 0.25 0 0 1 3.25 15L4.75 15A0.25 0.25 0 0 1 5 15.25L5 15.75A0.25 0.25 0 0 0 5.25 16L5.75 16A0.25 0.25 0 0 1 6 16.25L6 16.75A0.25 0.25 0 0 0 6.25 17L7.75 17A0.25 0.25 0 0 1 8 17.25L8 17.75A0.25 0.25 0 0 0 8.25 18L9.75 18A0.25 0.25 0 0 1 10 18.25L10 18.75A0.25 0.25 0 0 1 9.75 19L9.25 19A0.25 0.25 0 0 0 9 19.25L9 20.75A0.25 0.25 0 0 1 8.75 21L8.25 21A0.25 0.25 0 0 0 8 21.25L8 24.75A0.25 0.25 0 0 0 8.25 25L9.75 25A0.25 0.25 0 0 0 10 24.75L10 22.25A0.25 0.25 0 0 1 10.25 22L10.75 22A0.25 0.25 0 0 1 11 22.25L11 22.75A0.25 0.25 0 0 0 11.25 23L13.75 23A0.25 0.25 0 0 0 14 22.75L14 20.25A0.25 0.25 0 0 1 14.25 20L15.75 20A0.25 0.25 0 0 1 16 20.25L16 21.75A0.25 0.25 0 0 1 15.75 22L15.25 22A0.25 0.25 0 0 0 15 22.25L15 23.75A0.25 0.25 0 0 1 14.75 24L14.25 24A0.25 0.25 0 0 0 14 24.25L14 24.75A0.25 0.25 0 0 0 14.25 25L15.75 25A0.25 0.25 0 0 0 16 24.75L16 24.25A0.25 0.25 0 0 1 16.25 24L17.75 24A0.25 0.25 0 0 0 18 23.75L18 22.25A0.25 0.25 0 0 0 17.75 22L17.25 22A0.25 0.25 0 0 1 17 21.75L17 21.25A0.25 0.25 0 0 1 17.25 21L19.75 21A0.25 0.25 0 0 1 20 21.25L20 21.75A0.25 0.25 0 0 0 20.25 22L20.75 22A0.25 0.25 0 0 1 21 22.25L21 22.75A0.25 0.25 0 0 1 20.75 23L20.25 23A0.25 0.25 0 0 0 20 23.25L20 23.75A0.25 0.25 0 0 0 20.25 24L20.75 24A0.25 0.25 0 0 0 21 23.75L21 23.25A0.25 0.25 0 0 1 21.25 23L21.75 23A0.25 0.25 0 0 1 22 23.25L22 24.75A0.25 0.25 0 0 0 22.25 25L24.75 25A0.25 0.25 0 0 0 25 24.75L25 23.25A0.25 0.25 0 0 0 24.75 23L24.25 23A0.25 0.25 0 0 1 24 22.75L24 22.25A0.25 0.25 0 0 1 24.25 22L24.75 22A0.25 0.25 0 0 0 25 21.75L25 18.25A0.25 0.25 0 0 0 24.75 18L23.25 18A0.25 0.25 0 0 1 23 17.75L23 17.25A0.25 0.25 0 0 1 23.25 17L23.75 17A0.25 0.25 0 0 0 24 16.75L24 16.25A0.25 0.25 0 0 1 24.25 16L24.75 16A0.25 0.25 0 0 0 25 15.75L25 15.25A0.25 0.25 0 0 0 24.75 15L24.25 15A0.25 0.25 0 0 1 24 14.75L24 13.25A0.25 0.25 0 0 1 24.25 13L24.75 13A0.25 0.25 0 0 0 25 12.75L25 8.25A0.25 0.25 0 0 0 24.75 8L24.25 8A0.25 0.25 0 0 0 24 8.25L24 9.75A0.25 0.25 0 0 1 23.75 10L21.25 10A0.25 0.25 0 0 1 21 9.75L21 9.25A0.25 0.25 0 0 1 21.25 9L22.75 9A0.25 0.25 0 0 0 23 8.75L23 8.25A0.25 0.25 0 0 0 22.75 8L20.25 8A0.25 0.25 0 0 0 20 8.25L20 8.75A0.25 0.25 0 0 1 19.75 9L19.25 9A0.25 0.25 0 0 0 19 9.25L19 9.75A0.25 0.25 0 0 0 19.25 10L20.75 10A0.25 0.25 0 0 1 21 10.25L21 11.75A0.25 0.25 0 0 1 20.75 12L20.25 12A0.25 0.25 0 0 1 20 11.75L20 11.25A0.25 0.25 0 0 0 19.75 11L18.25 11A0.25 0.25 0 0 0 18 11.25L18 13.75A0.25 0.25 0 0 1 17.75 14L17.25 14A0.25 0.25 0 0 1 17 13.75L17 12.25A0.25 0.25 0 0 0 16.75 12L16.25 12A0.25 0.25 0 0 1 16 11.75L16 11.25A0.25 0.25 0 0 1 16.25 11L16.75 11A0.25 0.25 0 0 0 17 10.75L17 10.25A0.25 0.25 0 0 1 17.25 10L17.75 10A0.25 0.25 0 0 0 18 9.75L18 8.25A0.25 0.25 0 0 0 17.75 8L17.25 8A0.25 0.25 0 0 1 17 7.75L17 6.25A0.25 0.25 0 0 0 16.75 6L16.25 6A0.25 0.25 0 0 0 16 6.25L16 6.75A0.25 0.25 0 0 1 15.75 7L15.25 7A0.25 0.25 0 0 1 15 6.75L15 5.25A0.25 0.25 0 0 0 14.75 5L14.25 5A0.25 0.25 0 0 0 14 5.25L14 6.75A0.25 0.25 0 0 1 13.75 7L13.25 7A0.25 0.25 0 0 1 13 6.75L13 5.25A0.25 0.25 0 0 0 12.75 5L12.25 5A0.25 0.25 0 0 1 12 4.75L12 3.25A0.25 0.25 0 0 1 12.25 3L12.75 3A0.25 0.25 0 0 1 13 3.25L13 3.75A0.25 0.25 0 0 0 13.25 4L13.75 4A0.25 0.25 0 0 0 14 3.75L14 1.25A0.25 0.25 0 0 0 13.75 1L13.25 1A0.25 0.25 0 0 0 13 1.25ZM10 5.25L10 5.75A0.25 0.25 0 0 1 9.75 6L9.25 6A0.25 0.25 0 0 0 9 6.25L9 6.75A0.25 0.25 0 0 0 9.25 7L9.75 7A0.25 0.25 0 0 1 10 7.25L10 7.75A0.25 0.25 0 0 1 9.75 8L9.25 8A0.25 0.25 0 0 0 9 8.25L9 8.75A0.25 0.25 0 0 1 8.75 9L8.25 9A0.25 0.25 0 0 0 8 9.25L8 9.75A0.25 0.25 0 0 1 7.75 10L7.25 10A0.25 0.25 0 0 1 7 9.75L7 9.25A0.25 0.25 0 0 0 6.75 9L6.25 9A0.25 0.25 0 0 0 6 9.25L6 9.75A0.25 0.25 0 0 1 5.75 10L4.25 10A0.25 0.25 0 0 1 4 9.75L4 9.25A0.25 0.25 0 0 0 3.75 9L3.25 9A0.25 0.25 0 0 0 3 9.25L3 9.75A0.25 0.25 0 0 0 3.25 10L3.75 10A0.25 0.25 0 0 1 4 10.25L4 11.75A0.25 0.25 0 0 1 3.75 12L3.25 12A0.25 0.25 0 0 0 3 12.25L3 12.75A0.25 0.25 0 0 0 3.25 13L3.75 13A0.25 0.25 0 0 0 4 12.75L4 12.25A0.25 0.25 0 0 1 4.25 12L4.75 12A0.25 0.25 0 0 1 5 12.25L5 12.75A0.25 0.25 0 0 0 5.25 13L5.75 13A0.25 0.25 0 0 1 6 13.25L6 13.75A0.25 0.25 0 0 0 6.25 14L6.75 14A0.25 0.25 0 0 1 7 14.25L7 14.75A0.25 0.25 0 0 1 6.75 15L6.25 15A0.25 0.25 0 0 0 6 15.25L6 15.75A0.25 0.25 0 0 0 6.25 16L7.75 16A0.25 0.25 0 0 1 8 16.25L8 16.75A0.25 0.25 0 0 0 8.25 17L10.75 17A0.25 0.25 0 0 1 11 17.25L11 17.75A0.25 0.25 0 0 0 11.25 18L11.75 18A0.25 0.25 0 0 0 12 17.75L12 17.25A0.25 0.25 0 0 1 12.25 17L12.75 17A0.25 0.25 0 0 0 13 16.75L13 16.25A0.25 0.25 0 0 0 12.75 16L12.25 16A0.25 0.25 0 0 1 12 15.75L12 14.25A0.25 0.25 0 0 1 12.25 14L12.75 14A0.25 0.25 0 0 1 13 14.25L13 14.75A0.25 0.25 0 0 0 13.25 15L13.75 15A0.25 0.25 0 0 1 14 15.25L14 16.75A0.25 0.25 0 0 0 14.25 17L14.75 17A0.25 0.25 0 0 1 15 17.25L15 17.75A0.25 0.25 0 0 1 14.75 18L13.25 18A0.25 0.25 0 0 0 13 18.25L13 19.75A0.25 0.25 0 0 0 13.25 20L13.75 20A0.25 0.25 0 0 0 14 19.75L14 19.25A0.25 0.25 0 0 1 14.25 19L14.75 19A0.25 0.25 0 0 0 15 18.75L15 18.25A0.25 0.25 0 0 1 15.25 18L15.75 18A0.25 0.25 0 0 0 16 17.75L16 14.25A0.25 0.25 0 0 0 15.75 14L15.25 14A0.25 0.25 0 0 1 15 13.75L15 13.25A0.25 0.25 0 0 0 14.75 13L14.25 13A0.25 0.25 0 0 1 14 12.75L14 12.25A0.25 0.25 0 0 1 14.25 12L14.75 12A0.25 0.25 0 0 0 15 11.75L15 11.25A0.25 0.25 0 0 1 15.25 11L15.75 11A0.25 0.25 0 0 0 16 10.75L16 10.25A0.25 0.25 0 0 1 16.25 10L16.75 10A0.25 0.25 0 0 0 17 9.75L17 9.25A0.25 0.25 0 0 0 16.75 9L16.25 9A0.25 0.25 0 0 1 16 8.75L16 8.25A0.25 0.25 0 0 0 15.75 8L15.25 8A0.25 0.25 0 0 0 15 8.25L15 8.75A0.25 0.25 0 0 0 15.25 9L15.75 9A0.25 0.25 0 0 1 16 9.25L16 9.75A0.25 0.25 0 0 1 15.75 10L14.25 10A0.25 0.25 0 0 1 14 9.75L14 8.25A0.25 0.25 0 0 0 13.75 8L13.25 8A0.25 0.25 0 0 1 13 7.75L13 7.25A0.25 0.25 0 0 0 12.75 7L12.25 7A0.25 0.25 0 0 1 12 6.75L12 5.25A0.25 0.25 0 0 0 11.75 5L10.25 5A0.25 0.25 0 0 0 10 5.25ZM10 6.25L10 6.75A0.25 0.25 0 0 0 10.25 7L10.75 7A0.25 0.25 0 0 1 11 7.25L11 7.75A0.25 0.25 0 0 0 11.25 8L11.75 8A0.25 0.25 0 0 0 12 7.75L12 7.25A0.25 0.25 0 0 0 11.75 7L11.25 7A0.25 0.25 0 0 1 11 6.75L11 6.25A0.25 0.25 0 0 0 10.75 6L10.25 6A0.25 0.25 0 0 0 10 6.25ZM9 9.25L9 9.75A0.25 0.25 0 0 0 9.25 10L9.75 10A0.25 0.25 0 0 0 10 9.75L10 9.25A0.25 0.25 0 0 0 9.75 9L9.25 9A0.25 0.25 0 0 0 9 9.25ZM6 10.25L6 10.75A0.25 0.25 0 0 1 5.75 11L5.25 11A0.25 0.25 0 0 0 5 11.25L5 11.75A0.25 0.25 0 0 0 5.25 12L5.75 12A0.25 0.25 0 0 1 6 12.25L6 12.75A0.25 0.25 0 0 0 6.25 13L6.75 13A0.25 0.25 0 0 1 7 13.25L7 13.75A0.25 0.25 0 0 0 7.25 14L7.75 14A0.25 0.25 0 0 1 8 14.25L8 14.75A0.25 0.25 0 0 0 8.25 15L10.75 15A0.25 0.25 0 0 0 11 14.75L11 14.25A0.25 0.25 0 0 1 11.25 14L11.75 14A0.25 0.25 0 0 0 12 13.75L12 12.25A0.25 0.25 0 0 1 12.25 12L12.75 12A0.25 0.25 0 0 0 13 11.75L13 11.25A0.25 0.25 0 0 1 13.25 11L13.75 11A0.25 0.25 0 0 0 14 10.75L14 10.25A0.25 0.25 0 0 0 13.75 10L13.25 10A0.25 0.25 0 0 0 13 10.25L13 10.75A0.25 0.25 0 0 1 12.75 11L11.25 11A0.25 0.25 0 0 0 11 11.25L11 12.75A0.25 0.25 0 0 1 10.75 13L10.25 13A0.25 0.25 0 0 1 10 12.75L10 12.25A0.25 0.25 0 0 0 9.75 12L6.25 12A0.25 0.25 0 0 1 6 11.75L6 11.25A0.25 0.25 0 0 1 6.25 11L6.75 11A0.25 0.25 0 0 0 7 10.75L7 10.25A0.25 0.25 0 0 0 6.75 10L6.25 10A0.25 0.25 0 0 0 6 10.25ZM23 11.25L23 11.75A0.25 0.25 0 0 1 22.75 12L22.25 12A0.25 0.25 0 0 0 22 12.25L22 14.75A0.25 0.25 0 0 1 21.75 15L19.25 15A0.25 0.25 0 0 1 19 14.75L19 14.25A0.25 0.25 0 0 0 18.75 14L18.25 14A0.25 0.25 0 0 0 18 14.25L18 14.75A0.25 0.25 0 0 1 17.75 15L17.25 15A0.25 0.25 0 0 0 17 15.25L17 15.75A0.25 0.25 0 0 0 17.25 16L20.75 16A0.25 0.25 0 0 1 21 16.25L21 16.75A0.25 0.25 0 0 0 21.25 17L22.75 17A0.25 0.25 0 0 0 23 16.75L23 12.25A0.25 0.25 0 0 1 23.25 12L23.75 12A0.25 0.25 0 0 0 24 11.75L24 11.25A0.25 0.25 0 0 0 23.75 11L23.25 11A0.25 0.25 0 0 0 23 11.25ZM9 13.25L9 13.75A0.25 0.25 0 0 0 9.25 14L9.75 14A0.25 0.25 0 0 0 10 13.75L10 13.25A0.25 0.25 0 0 0 9.75 13L9.25 13A0.25 0.25 0 0 0 9 13.25ZM20 13.25L20 13.75A0.25 0.25 0 0 0 20.25 14L20.75 14A0.25 0.25 0 0 0 21 13.75L21 13.25A0.25 0.25 0 0 0 20.75 13L20.25 13A0.25 0.25 0 0 0 20 13.25ZM11 16.25L11 16.75A0.25 0.25 0 0 0 11.25 17L11.75 17A0.25 0.25 0 0 0 12 16.75L12 16.25A0.25 0.25 0 0 0 11.75 16L11.25 16A0.25 0.25 0 0 0 11 16.25ZM17 17.25L17 19.75A0.25 0.25 0 0 0 17.25 20L19.75 20A0.25 0.25 0 0 0 20 19.75L20 17.25A0.25 0.25 0 0 0 19.75 17L17.25 17A0.25 0.25 0 0 0 17 17.25ZM18 18.25L18 18.75A0.25 0.25 0 0 0 18.25 19L18.75 19A0.25 0.25 0 0 0 19 18.75L19 18.25A0.25 0.25 0 0 0 18.75 18L18.25 18A0.25 0.25 0 0 0 18 18.25ZM21 18.25L21 21.75A0.25 0.25 0 0 0 21.25 22L22.75 22A0.25 0.25 0 0 0 23 21.75L23 21.25A0.25 0.25 0 0 1 23.25 21L23.75 21A0.25 0.25 0 0 0 24 20.75L24 20.25A0.25 0.25 0 0 0 23.75 20L23.25 20A0.25 0.25 0 0 1 23 19.75L23 19.25A0.25 0.25 0 0 0 22.75 19L22.25 19A0.25 0.25 0 0 1 22 18.75L22 18.25A0.25 0.25 0 0 0 21.75 18L21.25 18A0.25 0.25 0 0 0 21 18.25ZM11 19.25L11 19.75A0.25 0.25 0 0 1 10.75 20L10.25 20A0.25 0.25 0 0 0 10 20.25L10 20.75A0.25 0.25 0 0 1 9.75 21L9.25 21A0.25 0.25 0 0 0 9 21.25L9 21.75A0.25 0.25 0 0 0 9.25 22L9.75 22A0.25 0.25 0 0 0 10 21.75L10 21.25A0.25 0.25 0 0 1 10.25 21L10.75 21A0.25 0.25 0 0 1 11 21.25L11 21.75A0.25 0.25 0 0 0 11.25 22L11.75 22A0.25 0.25 0 0 0 12 21.75L12 21.25A0.25 0.25 0 0 0 11.75 21L11.25 21A0.25 0.25 0 0 1 11 20.75L11 20.25A0.25 0.25 0 0 1 11.25 20L11.75 20A0.25 0.25 0 0 0 12 19.75L12 19.25A0.25 0.25 0 0 0 11.75 19L11.25 19A0.25 0.25 0 0 0 11 19.25ZM22 20.25L22 20.75A0.25 0.25 0 0 0 22.25 21L22.75 21A0.25 0.25 0 0 0 23 20.75L23 20.25A0.25 0.25 0 0 0 22.75 20L22.25 20A0.25 0.25 0 0 0 22 20.25ZM16 22.25L16 22.75A0.25 0.25 0 0 0 16.25 23L16.75 23A0.25 0.25 0 0 0 17 22.75L17 22.25A0.25 0.25 0 0 0 16.75 22L16.25 22A0.25 0.25 0 0 0 16 22.25ZM12 24.25L12 24.75A0.25 0.25 0 0 0 12.25 25L12.75 25A0.25 0.25 0 0 0 13 24.75L13 24.25A0.25 0.25 0 0 0 12.75 24L12.25 24A0.25 0.25 0 0 0 12 24.25ZM0 0L7 0L7 7L0 7ZM1 1L1 6L6 6L6 1ZM5 3.5A1.5 1.5 0 0 1 3.5 5A1.5 1.5 0 0 1 2 3.5A1.5 1.5 0 0 1 3.5 2A1.5 1.5 0 0 1 5 3.5ZM18 0L25 0L25 7L18 7ZM19 1L19 6L24 6L24 1ZM23 3.5A1.5 1.5 0 0 1 21.5 5A1.5 1.5 0 0 1 20 3.5A1.5 1.5 0 0 1 21.5 2A1.5 1.5 0 0 1 23 3.5ZM0 18L7 18L7 25L0 25ZM1 19L1 24L6 24L6 19ZM5 21.5A1.5 1.5 0 0 1 3.5 23A1.5 1.5 0 0 1 2 21.5A1.5 1.5 0 0 1 3.5 20A1.5 1.5 0 0 1 5 21.5Z"
+                    fill="#000000"></path>
+                </g>
+              </g>
+            </svg>
+
+          </div>
+          <a href="https://chatgpt.com/" class="text-center text-blue-500 underline text-md" target="_blank">
+            https://chatgpt.com/
+          </a>
+        </div>
+      </div>
+      <div id="theapka-thank-you" class="w-full text-center h-[750px] bg-center bg-cover bg-no-repeat relative"
+        style="background-image: url('https://theapka.com/storage/01J4TYXR517E73RV2PRB75Y5ME.jpg');">
+        <div class="z-0 w-full h-full bg-white opacity-30"></div>
+        <div
+          class="absolute w-full px-3 mx-auto text-center text-white transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-1">
+          <div class="max-w-xl p-2 mx-auto mt-24 text-xl leading-8 font-dangrek rounded-2xl"
+            style="background: #cfbdb470">
+            <img src="https://theapka.com/storage/templates/chhay/images/thank.gif" class="h-24 mx-auto" alt="">
+            <div class="justify-between mt-4">
+              វត្តមានឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា
+              ជាកិត្តិយសដ៏ឧត្តុង្គឧត្តម ចំពោះគ្រួសាររបស់យើងខ្ញុំ។
+            </div>
+            <div class="flex justify-center mx-auto">
+              <img src="https://theapka.com/storage/templates/chhay/images/flower_2.gif" class="h-12" alt=""><img
+                src="https://theapka.com/storage/templates/chhay/images/flower_2.gif" class="h-12" alt=""><img
+                src="https://theapka.com/storage/templates/chhay/images/flower_2.gif" class="h-12" alt=""><img
+                src="https://theapka.com/storage/templates/chhay/images/flower_2.gif" class="h-12" alt=""><img
+                src="https://theapka.com/storage/templates/chhay/images/flower_2.gif" class="h-12" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
